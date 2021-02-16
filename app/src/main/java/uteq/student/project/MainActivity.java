@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity( new Intent(MainActivity.this, StartActivity.class));
     }
     public void BtnRecor(View view){
-        startActivity( new Intent(MainActivity.this, RecordatorioActivity.class));
+        //startActivity( new Intent(MainActivity.this, RecordatorioActivity.class));
     }
     //Se controla la pulsacion del boton atras
     @Override
