@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">DROWER</string>
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="formato_fecha">dd/mm/yyyy</string>
+    <string name="home">HOME</string>
+    <string name="calendar">Calendario</string>
+    <string name="addUser">Add User</string>
+    <string name="report">Report</string>
+    <string name="exit">Exit</string>
+    <string name="others">Others</string>
+    <string name="nameUser">Josefina</string>
+    <string name="verified">Verified</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">AÑADIR ANCIANOS</string>
+    <string name="fragmentcalendar">CALENDARIO</string>
+    <string name="fragmenthome">HOME</string>
+    <string name="fragmentperfil">pasar aqui la configuracion</string>
+    <string name="fragmentreport">REPORTE</string>
+    <string name="menuperfil">Perfil</string>
+    <string name="tuid">YOU ID:</string>
+    <string name="adduser">ADD USER</string>
+
+
+</resources>

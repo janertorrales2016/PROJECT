@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:id="@+id/btncalendario"
+        android:layout_width="140dp"
+        android:layout_height="116dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="98dp"
+        android:onClick="BtnRecor"
+        android:text="calendario" />
+
+    <Button
+        android:id="@+id/btnadddispo"
+        android:layout_width="140dp"
+        android:layout_height="116dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="254dp"
+        android:onClick="btnAddDispo"
+        android:text="add dispositivo" />
+
+    <Button
+        android:id="@+id/btnconfig"
+        android:layout_width="140dp"
+        android:layout_height="116dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="225dp"
+        android:layout_marginTop="257dp"
+        android:onClick="BtnConfig"
+        android:text="confuguracion" />
+
+    <Button
+        android:id="@+id/btncerrars"
+        android:layout_width="140dp"
+        android:layout_height="116dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="557dp"
+        android:onClick="BtnCerrarSesion"
+        android:text="cerrarsesion" />
+
+    <Button
+        android:id="@+id/btnmanagerusers"
+        android:layout_width="154dp"
+        android:layout_height="120dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="515dp"
+        android:onClick="btnManagerUser"
+        android:text="manager users" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="138dp"
+        android:layout_height="118dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="224dp"
+        android:onClick="btnReport"
+        android:text="REPORTE" />
+
+</RelativeLayout>
