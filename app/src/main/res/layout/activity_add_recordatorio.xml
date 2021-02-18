@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddRecordatorioActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"></include>
+    <!--<TextView
+        android:id="@+id/tvTituloNuevo"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="10dp"
+        android:text="Nuevo Recordatorio"
+        android:textSize="24sp" />-->
+    <TextView
+        android:id="@+id/tvTituloNuevo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NEW REMINDER"
+        android:textColor="#266195"
+        android:gravity="center"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:textStyle="bold|italic" />
+
+    <EditText
+        android:id="@+id/tituloRecordatorio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTituloNuevo"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="Ingrese título del recordatorio"
+        android:textColorHighlight="#266195"
+        android:textColorLink="#266195" />
+
+    <EditText
+        android:id="@+id/hora"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tituloRecordatorio"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:inputType="time"
+        android:focusable="false"
+        android:maxLines="1"
+        android:clickable="true"
+        android:onClick="clickTextView"
+        android:hint="Seleccione Hora"
+        android:textAlignment="viewStart"/>
+
+    <EditText
+        android:id="@+id/fecha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hora"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:inputType="time"
+        android:focusable="false"
+        android:maxLines="1"
+        android:clickable="true"
+        android:textAlignment="viewStart"/>
+
+    <Spinner
+        android:id="@+id/splistadispositivos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_below="@+id/fecha"
+        android:textAlignment="viewStart"
+        android:hint="Seleccione dispositivo "/>'
+
+    <Spinner
+        android:id="@+id/sprepetirrecordatorio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_below="@+id/splistadispositivos"
+        android:textAlignment="viewStart"
+        android:hint="Repeticion"/>
+
+    <!--<EditText
+        android:id="@+id/numeroRepeticiones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sprepetirrecordatorio"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:inputType="number"
+        android:hint="Numero de repeticiones"/>-->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sprepetirrecordatorio"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btnAgregarRecordatorio"
+            android:text="Guardar "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="agregarRecordatorio"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

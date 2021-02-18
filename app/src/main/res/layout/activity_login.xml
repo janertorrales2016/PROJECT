@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <ImageView
+    tools:context=".LoginActivity">
+<!-- androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--<ImageView
         android:id="@+id/circle5"
         android:layout_width="38dp"
         android:layout_height="34dp"
@@ -26,7 +26,7 @@
         android:src="@drawable/circle"
         app:layout_constraintTop_toBottomOf="@+id/gotoRegister"
         tools:layout_editor_absoluteX="246dp" />
-
+-->
     <ImageView
         android:id="@+id/circle3"
         android:layout_width="75dp"

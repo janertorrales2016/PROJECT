@@ -97,4 +97,13 @@ public class LoginActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (auth.getCurrentUser()!=null){
+            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+            finish();
+        }
+    }
 }

@@ -2,12 +2,105 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"></include>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ImageButton
+        android:id="@+id/btnRecordatorios"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="@android:dimen/app_icon_size"
+        android:background="@drawable/boton_recordatorios"
+        android:clickable="true"
+        android:gravity="center"
+        android:onClick="btnRecordatorios" />
+    <TextView
+        android:id="@+id/textView_titulo_menu_instituciones"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:text="REMINDERS"
+        android:textColor="#266195"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:onClick="btnRecordatorios"
+        android:textStyle="bold|italic" />
+    <TextView
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:text="Add, Modify and Delete your reminders"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:onClick="btnRecordatorios"
+        android:textSize="12sp"
+        android:textStyle="bold|italic" />
 
 
+    <ImageButton
+        android:id="@+id/btnReportes"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="@android:dimen/app_icon_size"
+        android:background="@drawable/boton_reportes"
+        android:clickable="true"
+        android:gravity="center"
+        android:onClick="btnReport" />
+    <TextView
+        android:id="@+id/textView_titulo_menu_intituciones"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:text="REPORTS"
+        android:textColor="#266195"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+    <TextView
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:text="Show the detail of the assigned activities"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:textStyle="bold|italic" />
+
+
+    <ImageButton
+        android:id="@+id/btnReport"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="@android:dimen/app_icon_size"
+        android:background="@drawable/boton_historial"
+        android:clickable="true"
+        android:gravity="center"
+        android:onClick="btnReport" />
+    <TextView
+        android:id="@+id/textView_titulo_enu_intituciones"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:text="HISTORIAL"
+        android:textColor="#266195"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+    <TextView
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:text="Mostrar la información de las actividades asignadas"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:textStyle="bold|italic" />
+
+</LinearLayout>
+<!--
     <Button
         android:id="@+id/btncalendario"
         android:layout_width="140dp"
@@ -73,6 +166,6 @@
         android:layout_marginStart="52dp"
         android:layout_marginBottom="224dp"
         android:onClick="btnReport"
-        android:text="REPORTE" />
+        android:text="REPORTE" />-->
 
 </RelativeLayout>

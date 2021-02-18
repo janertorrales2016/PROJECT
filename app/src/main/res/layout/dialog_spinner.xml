@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+
+    <!-- <LinearLayout
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/sprepetirrecordatorio"
+         android:gravity="center"
+         >-->
+    <CheckBox
+        android:id="@+id/ckLunes"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:text="Lunes" />
+
+    <CheckBox
+        android:id="@+id/ckMartes"
+        android:layout_width="110dp"
+        android:layout_height="38dp"
+        android:text="Martes" />
+
+    <CheckBox
+        android:id="@+id/ckMiercoles"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:text="Miércoles" />
+
+
+    <CheckBox
+        android:id="@+id/ckJueves"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:text="Jueves" />
+
+    <CheckBox
+        android:id="@+id/ckViernes"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:text="Viernes" />
+
+    <CheckBox
+        android:id="@+id/ckSabado"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:text="Sábado" />
+
+    <CheckBox
+        android:id="@+id/ckDomingo"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:text="Domingo" />
+
+</LinearLayout>

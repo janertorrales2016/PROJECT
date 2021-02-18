@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/recordatorios" android:state_pressed="true" /> <!-- presionado -->
+    <item android:drawable="@drawable/recordatorios" android:state_focused="true" /> <!-- centrado -->
+    <item android:drawable="@drawable/recordatorios" /> <!-- Por Defecto -->
+
+</selector>
