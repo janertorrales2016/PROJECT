@@ -61,6 +61,7 @@
         android:textColor="#266195"
         android:gravity="center"
         android:textSize="18sp"
+        android:onClick="btnReport"
         android:textStyle="bold|italic" />
     <TextView
         android:layout_width="205dp"
@@ -69,6 +70,7 @@
         android:textColor="#000000"
         android:gravity="center"
         android:textSize="12sp"
+        android:onClick="btnReport"
         android:textStyle="bold|italic" />
 
 
@@ -80,23 +82,25 @@
         android:background="@drawable/boton_historial"
         android:clickable="true"
         android:gravity="center"
-        android:onClick="btnReport" />
+        android:onClick="btnHistorial" />
     <TextView
         android:id="@+id/textView_titulo_enu_intituciones"
         android:layout_width="205dp"
         android:layout_height="wrap_content"
-        android:text="HISTORIAL"
+        android:text="HISTORY"
         android:textColor="#266195"
         android:gravity="center"
         android:textSize="18sp"
+        android:onClick="btnHistorial"
         android:textStyle="bold|italic" />
     <TextView
         android:layout_width="205dp"
         android:layout_height="wrap_content"
-        android:text="Mostrar la información de las actividades asignadas"
+        android:text="Display information on assigned activities"
         android:textColor="#000000"
         android:gravity="center"
         android:textSize="12sp"
+        android:onClick="btnHistorial"
         android:textStyle="bold|italic" />
 
 </LinearLayout>

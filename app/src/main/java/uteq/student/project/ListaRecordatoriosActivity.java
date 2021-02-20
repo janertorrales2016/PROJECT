@@ -55,16 +55,26 @@ public class ListaRecordatoriosActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseRecyclerOptions<Recordatorios> options =
-                new FirebaseRecyclerOptions.Builder<Recordatorios>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("datos").child("recordatorios").child(mac).orderByChild("fecha").equalTo(fecha), Recordatorios.class)
-                        .build();
+        FirebaseRecyclerOptions<Recordatorios> options;
+        if(fecha.equals("sinFecha")) {
+             options =
+                    new FirebaseRecyclerOptions.Builder<Recordatorios>()
+                            .setQuery(FirebaseDatabase.getInstance().getReference().child("datos").child("recordatorios").child(mac), Recordatorios.class)
+                            .build();
+        }
+        else{
+            options =
+                    new FirebaseRecyclerOptions.Builder<Recordatorios>()
+                            .setQuery(FirebaseDatabase.getInstance().getReference().child("datos").child("recordatorios").child(mac).orderByChild("fecha").equalTo(fecha), Recordatorios.class)
+                            .build();
+        }
 
         FirebaseRecyclerAdapter<Recordatorios, ListaRecordatoriosActivity.myviewholder> adapter =
         new FirebaseRecyclerAdapter<Recordatorios, myviewholder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull myviewholder holder, int position, @NonNull Recordatorios model) {
                 holder.tituloRecordatorio.setText(model.getMensaje());
+                holder.fechaRecordatorio.setText(model.getFecha());
                 holder.horaRecordatorio.setText(model.getHora());
                 holder.estadoRecordatorio.setText(model.getEstado());
 
@@ -90,12 +100,13 @@ public class ListaRecordatoriosActivity extends AppCompatActivity {
 
 
     class myviewholder extends RecyclerView.ViewHolder {
-        TextView tituloRecordatorio, horaRecordatorio, estadoRecordatorio;
+        TextView tituloRecordatorio, fechaRecordatorio,horaRecordatorio, estadoRecordatorio;
 
         public myviewholder(@NonNull View itemView) {
             super(itemView);
             // urlimagen=(ImageView) itemView.findViewById(R.id.imgPortada_user);
             tituloRecordatorio = (TextView) itemView.findViewById(R.id.rvTituloListaRecordatorios);
+            fechaRecordatorio=(TextView) itemView.findViewById(R.id.rvFechaListaRecordatorios);
             horaRecordatorio = (TextView) itemView.findViewById(R.id.rvHoraListaRecordatorios);
             estadoRecordatorio=(TextView) itemView.findViewById(R.id.rvEstadoListaRecordatorios);
         }

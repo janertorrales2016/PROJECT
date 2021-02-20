@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private String userID = mAuth.getCurrentUser().getUid();
 
-
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
     private String nombre,email, id;
@@ -103,6 +102,16 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
+    public void btnHistorial(View view){
+        Intent intent = new Intent(getApplication(), VistaRecordatoriosActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("userID", userID);
+        bundle.putString("fecha", "sinFecha");
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
     //Se controla la pulsacion del boton atras
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

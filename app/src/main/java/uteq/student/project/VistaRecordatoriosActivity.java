@@ -53,6 +53,7 @@ public class VistaRecordatoriosActivity extends AppCompatActivity {
         super.onStart();
         FirebaseRecyclerOptions<Dispositivos> options =
                 new FirebaseRecyclerOptions.Builder<Dispositivos>()
+                        //.setQuery(FirebaseDatabase.getInstance().getReference().child("dispositivos"), Dispositivos.class)
                         .setQuery(FirebaseDatabase.getInstance().getReference().child("dispositivos").orderByChild("id_usuario").equalTo(userID), Dispositivos.class)
                         .build();
 
@@ -68,14 +69,26 @@ public class VistaRecordatoriosActivity extends AppCompatActivity {
                             public void onClick(View v) {
                                 //String mac = getRef(position).getKey();
                                // String mac = model.getMac();
-                                //Toast.makeText(VistaRecordatoriosActivity.this,mac, Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplication(), ListaRecordatoriosActivity.class);
-                                Bundle bundle = new Bundle();
-                                bundle.putString("fecha", fecha);
-                                bundle.putString("userID",userID);
-                                bundle.putString("mac",model.getMac());
-                                intent.putExtras(bundle);
-                                startActivity(intent);
+
+                                if(fecha.equals("sinFecha")) {
+                                    //Toast.makeText(VistaRecordatoriosActivity.this,"NO HAY FECHA", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(getApplication(), ListaRecordatoriosActivity.class);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("fecha", fecha);
+                                    bundle.putString("userID", userID);
+                                    bundle.putString("mac", model.getMac());
+                                    intent.putExtras(bundle);
+                                    startActivity(intent);
+                                }
+                                else{
+                                    Intent intent = new Intent(getApplication(), ListaRecordatoriosActivity.class);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("fecha", fecha);
+                                    bundle.putString("userID", userID);
+                                    bundle.putString("mac", model.getMac());
+                                    intent.putExtras(bundle);
+                                    startActivity(intent);
+                                }
                             }
                         });
                     }
