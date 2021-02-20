@@ -164,6 +164,7 @@
         android:layout_marginTop="596dp"
         android:layout_marginEnd="32dp"
         android:text="Nuevo Usuario/Registro"
+        android:onClick="registro"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -186,14 +187,13 @@
         app:srcCompat="@drawable/logo" />
 
 
-    <ImageView
-        android:id="@+id/btnGoogle"
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
         android:layout_width="69dp"
         android:layout_height="55dp"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="280dp"
         android:layout_marginBottom="33dp"
-        android:onClick="loginGoogle"
         app:layout_constraintBottom_toTopOf="@+id/gotoRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/forgotPassword"

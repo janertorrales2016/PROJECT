@@ -69,7 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
                     map.put("fecha_update", currentDateandTime);
                     map.put("rol", "enfermero");
                     FirebaseDatabase.getInstance().getReference().child("usuario").child(user.getUid()).setValue(map);
-                    startActivity(new Intent(RegisterActivity.this, ConfigActivity.class));
+                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                     finish();
                 }else{
                     Toast.makeText(RegisterActivity.this,"Register Failed", Toast.LENGTH_SHORT).show();
