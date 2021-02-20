@@ -12,7 +12,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:inputType="number"
-        android:hint="Intervalo de horas"/>
+        android:hint="Interval hours"/>
 
     <EditText
         android:id="@+id/vecesXhoras"
@@ -22,6 +22,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:inputType="number"
-        android:hint="Número de veces"/>
+        android:hint="Hours to be repeated"/>
 
 </LinearLayout>

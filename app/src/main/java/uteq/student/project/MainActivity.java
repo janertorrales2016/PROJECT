@@ -169,30 +169,4 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /*private void getInfoUser(){
-        id=firebaseAuth.getCurrentUser().getUid();
-        databaseReference.child("usuario").child(id).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    idUsuario=snapshot.getKey();
-                    nombre=snapshot.child("apellido").getValue().toString();
-                    email=snapshot.child("cedula").getValue().toString();
-                    //lb_nombre.setText(nombre);
-                    //lb_email.setText(email);
-                    Toast.makeText(MainActivity.this,idUsuario+" "+nombre+" "+email, Toast.LENGTH_SHORT).show();
-                    /*View header = ((NavigationView)findViewById(R.id.nav_view)).getHeaderView(0);
-                    ((TextView) header.findViewById(R.id.txt_nav_usuario)).setText(nombre);
-                    ((TextView) header.findViewById(R.id.txt_nav_correo)).setText(email);
-                    mDialog.dismiss();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-
-            }
-        });
-    }*/
 }

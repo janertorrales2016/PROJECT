@@ -100,11 +100,11 @@ public class RecordatoriosActivity extends AppCompatActivity implements Calendar
             //SI LA FECHA ES MAYOR O IGUAL SE ABRE UN DIALOG
             if (com.equals("-1") || com.equals("0")) {
                 items = new CharSequence[3];
-                items[0] = "Agregar Recordatorio";
-                items[1] = "Ver Recordatorios";
-                items[2] = "Cancelar";
+                items[0] = "Add Reminder";
+                items[1] = "Reminder View";
+                items[2] = "Cancel";
 
-                builder.setTitle("Seleccione una Actividad");
+                builder.setTitle("Select Activity");
                 builder.setCancelable(false);
                 builder.setItems(items, new DialogInterface.OnClickListener() {
 
@@ -136,10 +136,10 @@ public class RecordatoriosActivity extends AppCompatActivity implements Calendar
             //CASO CONTRARIO OTRO DIALOG SIN LA OPCION DE AGREGAR RECORDATORIO
             else {
                 items = new CharSequence[2];
-                items[0] = "Ver Recordatorios";
-                items[1] = "Cancelar";
+                items[0] = "Reminder View";
+                items[1] = "Cancel";
 
-                builder.setTitle("Seleccione una Actividad");
+                builder.setTitle("Select Activity");
                 builder.setCancelable(false);
                 builder.setItems(items, new DialogInterface.OnClickListener() {
 

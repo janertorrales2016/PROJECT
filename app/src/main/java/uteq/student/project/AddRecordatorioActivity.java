@@ -78,20 +78,20 @@ public class AddRecordatorioActivity extends AppCompatActivity {
 
 
         repeticionrecordatorio = (Spinner) findViewById(R.id.sprepetirrecordatorio);
-        String[] valores = {"Sin repetición", "Intervalo de horas", "Todos los dias", "Lunes a Viernes", "Sábado y Domingo", "Personalizar"};
+        //String[] valores = {"Sin repetición", "Intervalo de horas", "Todos los dias", "Lunes a Viernes", "Sábado y Domingo", "Personalizar"};
+        String[] valores = {"No repeat", "Interval hours", "Everyday"};
         repeticionrecordatorio.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, valores));
         repeticionrecordatorio.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 String a = (String) adapterView.getItemAtPosition(position);
-                if (a.equals("Sin repetición")) {
-                    // tipoRepeticion = "Sin repetición";
+                if (a.equals("No repeat")) {
                     repeticionrecordatorio.setSelection(0);
 
-                } else if (a.equals("Intervalo de horas")) {
+                } else if (a.equals("Interval hours")) {
                     AlertDialog.Builder mBuilder = new AlertDialog.Builder(AddRecordatorioActivity.this);
                     View mView = getLayoutInflater().inflate(R.layout.cantidad_horas, null);
-                    mBuilder.setTitle("Ingrese datos");
+                    mBuilder.setTitle("Enter data");
                     mBuilder.setCancelable(false);
                     TextView intervaloXhoras = (TextView) mView.findViewById(R.id.intervaloXhoras);
                     TextView vecesXhoras = (TextView) mView.findViewById(R.id.vecesXhoras);
@@ -104,16 +104,14 @@ public class AddRecordatorioActivity extends AppCompatActivity {
                                 veces = Integer.parseInt(vecesXhoras.getText().toString());
                             }
                             if (intervaloHoras > 0 && veces > 0) {
-                                // Toast.makeText(adapterView.getContext(), intervalo, Toast.LENGTH_SHORT).show();
-                                // tipoRepeticion = "Intervalo de horas";
                                 dialogInterface.dismiss();
                             } else {
-                                Toast.makeText(adapterView.getContext(), "Ingrese Valores", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(adapterView.getContext(), "Enter values", Toast.LENGTH_SHORT).show();
                                 repeticionrecordatorio.setSelection(0);
                             }
                         }
                     });
-                    mBuilder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             repeticionrecordatorio.setSelection(0);
@@ -124,11 +122,11 @@ public class AddRecordatorioActivity extends AppCompatActivity {
                     AlertDialog dialog = mBuilder.create();
                     dialog.show();
 
-                } else if (a.equals("Todos los dias")) {
+                } else if (a.equals("Everyday")) {
                     //Toast.makeText(adapterView.getContext(), "ENTRA", Toast.LENGTH_SHORT).show();
                     AlertDialog.Builder mBuilder = new AlertDialog.Builder(AddRecordatorioActivity.this);
                     View mView = getLayoutInflater().inflate(R.layout.cantidad_dias, null);
-                    mBuilder.setTitle("Ingrese datos");
+                    mBuilder.setTitle("Enter data");
                     mBuilder.setCancelable(false);
                     TextView vecesXdias = (TextView) mView.findViewById(R.id.vecesXdias);
 
@@ -142,7 +140,7 @@ public class AddRecordatorioActivity extends AppCompatActivity {
                                 // tipoRepeticion = "Intervalo de horas";
                                 dialogInterface.dismiss();
                             } else {
-                                Toast.makeText(adapterView.getContext(), "Ingrese Valores", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(adapterView.getContext(), "Enter values", Toast.LENGTH_SHORT).show();
                                 repeticionrecordatorio.setSelection(0);
                             }
                         }
@@ -182,7 +180,7 @@ public class AddRecordatorioActivity extends AppCompatActivity {
                         }
                     });
 
-                    mBuilder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             dialogInterface.dismiss();
@@ -201,8 +199,8 @@ public class AddRecordatorioActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                String a = (String) adapterView.getSelectedItem();//getItemAtPosition(position);
-                Toast.makeText(adapterView.getContext(), "Sin seleccion", Toast.LENGTH_SHORT).show();
+                //String a = (String) adapterView.getSelectedItem();//getItemAtPosition(position);
+                //Toast.makeText(adapterView.getContext(), "Sin seleccion", Toast.LENGTH_SHORT).show();
 
                 //  String spinnerText = ((TextView) findViewById(R.id.sprepetirrecordatorio)).getText().toString();
 
@@ -211,7 +209,7 @@ public class AddRecordatorioActivity extends AppCompatActivity {
     }
     public void listaDispositivos() {
         List<Dispositivos> dispositivos = new ArrayList<>();
-        mDataBase.child("dispositivos").addListenerForSingleValueEvent(new ValueEventListener() {
+        mDataBase.child("dispositivos").orderByChild("id_usuario").equalTo(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -253,10 +251,10 @@ public class AddRecordatorioActivity extends AppCompatActivity {
 
     public void agregarRecordatorio(View view) {
         tipoRepeticion = repeticionrecordatorio.getSelectedItem().toString();
-        if (tipoRepeticion.equals("Sin repetición")) {
+        if (tipoRepeticion.equals("No repeat")) {
             ingresarRecordatorio(tvFecha.getText().toString(), tvHora.getText().toString(), tvTitulo.getText().toString());
 
-        } else if (tipoRepeticion.equals("Intervalo de horas")) {
+        } else if (tipoRepeticion.equals("Interval hours")) {
             try {
                 //Calendar calendario = Calendar.getInstance();
                 SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy HH:mm:ss");
@@ -308,7 +306,7 @@ public class AddRecordatorioActivity extends AppCompatActivity {
             //String fechaRecordatorio = tvFecha.getText().toString() + " " + tvHora.getText().toString() + ":00";
 
 
-        } else if (tipoRepeticion.equals("Todos los dias")) {
+        } else if (tipoRepeticion.equals("Everyday")) {
             try {
                 //Calendar calendario = Calendar.getInstance();
                 SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy HH:mm:ss");
@@ -364,11 +362,11 @@ public class AddRecordatorioActivity extends AppCompatActivity {
 
         if (titulo.length() > 0 && hora.length() > 0) {
             mDataBase.child("datos").child("recordatorios").child(macSeleccionada).push().setValue(recordatorioMap);
-            Toast toast = Toast.makeText(getApplicationContext(), "Recordatorio agregado", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getApplicationContext(), "Add Successfull", Toast.LENGTH_SHORT);
             toast.show();
             super.onBackPressed();
         } else {
-            Toast toast = Toast.makeText(getApplicationContext(), "Ingrese todos los datos", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getApplicationContext(), "Please enter all data", Toast.LENGTH_SHORT);
             toast.show();
         }
     }
@@ -419,7 +417,7 @@ public class AddRecordatorioActivity extends AppCompatActivity {
                 horas,
                 minutos,
                 false);
-        ingresarHora.setTitle("Seleccione hora");
+        ingresarHora.setTitle("Select hour");
         ingresarHora.show();
     }
 

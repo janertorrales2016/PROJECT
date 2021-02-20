@@ -14,6 +14,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:inputType="number"
-        android:hint="Dias a repetir"/>
+        android:hint="Days to be repeated"/>
 
 </LinearLayout>
