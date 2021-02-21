@@ -40,7 +40,8 @@ public class LoginActivity extends AppCompatActivity  {
     private Button login;
     private FirebaseAuth auth;
 
-
+    SignInButton btSignIn;
+    GoogleSignInClient googleSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +60,79 @@ public class LoginActivity extends AppCompatActivity  {
             }
         });
 
-
+        //Asignacion variable
+        btSignIn = findViewById(R.id.sign_in_button);
+        //inicializar sig in option
+        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(
+                GoogleSignInOptions.DEFAULT_SIGN_IN
+        ).requestIdToken("316400243423-0cr0av79elmv1le122di0n7n93hqvhjv.apps.googleusercontent.com")
+                .requestEmail()
+                .build();
+        //inicializar el cliente
+        googleSignInClient = GoogleSignIn.getClient(LoginActivity.this,
+                googleSignInOptions);
+        btSignIn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view){
+               //inicializar inicio in intent
+               Intent intent = googleSignInClient.getSignInIntent();
+               //inicializar actividad de resultado
+               startActivityForResult(intent, 100);
+           }
+        });
+        FirebaseUser  firebaseUser = auth.getCurrentUser();
+        if(firebaseUser != null){
+            startActivity(new  Intent(LoginActivity.this,
+                    MainActivity.class)
+            .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //comprobar condicion
+        if(requestCode == 100){
+            Task<GoogleSignInAccount> signInAccountTask = GoogleSignIn
+                    .getSignedInAccountFromIntent(data);
+            if(signInAccountTask.isSuccessful()){
+                String s = "Ingreso Google corecto";
+                displayToast(s);
+                try {
+                    GoogleSignInAccount googleSignInAccount = signInAccountTask
+                            .getResult(ApiException.class);
+                    if(googleSignInAccount != null){
+                        AuthCredential authCredential = GoogleAuthProvider
+                                .getCredential(googleSignInAccount.getIdToken()
+                                , null);
+                        //chekear credenciales
+                        auth.signInWithCredential(authCredential)
+                                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if(task.isSuccessful()){
+                                            startActivity(new Intent(LoginActivity.this,
+                                                    MainActivity.class)
+                                                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                            displayToast("Ingreso exitoso firebase");
+                                        }else {
+                                            displayToast("Ingreso fallido: " +task.getException()
+                                            .getMessage());
+                                        }
+                                    }
+                                });
+                    }
+                    }catch(ApiException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    public void registro(View view){
+        startActivity(new Intent(LoginActivity.this,
+                RegisterActivity.class)
+                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+    }
     private void loginUser(String email, String pass) {
 
         auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -79,9 +150,6 @@ public class LoginActivity extends AppCompatActivity  {
 
     }
 
-    public void loginGoogle(View view) {
-
-    }
 
 
 
@@ -103,14 +171,5 @@ public class LoginActivity extends AppCompatActivity  {
             startActivity( new Intent(LoginActivity.this, StartActivity.class));
         }
         return super.onKeyDown(keyCode, event);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (auth.getCurrentUser()!=null){
-            startActivity(new Intent(LoginActivity.this,MainActivity.class));
-            finish();
-        }
     }
 }
