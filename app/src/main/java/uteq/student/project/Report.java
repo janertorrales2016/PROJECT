@@ -1,4 +1,4 @@
-package uteq.student.project.Model;
+package uteq.student.project;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -15,9 +15,9 @@
         <activity android:name=".VistaRecordatoriosActivity" />
         <activity android:name=".AddRecordatorioActivity" />
         <activity android:name=".RecordatoriosActivity" />
-        <activity android:name=".Model.Report" />
-        <activity android:name=".Model.AddDisp" />
-        <activity android:name=".Model.AddUser" />
+        <activity android:name=".Report" />
+        <activity android:name=".AddDisp" />
+        <activity android:name=".AddUser" />
         <activity android:name=".ConfigActivity" />
         <activity
             android:name=".MainActivity"

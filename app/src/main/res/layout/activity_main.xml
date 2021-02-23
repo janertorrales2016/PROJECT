@@ -103,6 +103,20 @@
         android:onClick="btnHistorial"
         android:textStyle="bold|italic" />
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="btnAddDispo"
+        android:text="add dispo" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="btnManagerUser"
+        android:text="add users" />
+
 </LinearLayout>
 <!--
     <Button
