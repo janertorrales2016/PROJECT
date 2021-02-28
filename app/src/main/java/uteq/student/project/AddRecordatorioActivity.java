@@ -36,6 +36,7 @@ import java.util.List;
 import java.util.Map;
 
 import uteq.student.project.Model.Dispositivos;
+import uteq.student.project.Model.paciente;
 
 public class AddRecordatorioActivity extends AppCompatActivity {
 
@@ -51,7 +52,7 @@ public class AddRecordatorioActivity extends AppCompatActivity {
     String minute = "";
 
     String macSeleccionada = "";
-    String tipoRepeticion = "Sin repetición";
+    String tipoRepeticion = "No repeat";
 
     int intervaloHoras = 0, veces = 0;
     @Override
@@ -209,7 +210,7 @@ public class AddRecordatorioActivity extends AppCompatActivity {
     }
     public void listaDispositivos() {
         List<Dispositivos> dispositivos = new ArrayList<>();
-        mDataBase.child("dispositivos").orderByChild("id_usuario").equalTo(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+        mDataBase.child("dispositivos").child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -220,7 +221,7 @@ public class AddRecordatorioActivity extends AppCompatActivity {
                         String mac = ds.child("mac").getValue().toString();
                         String user_id=ds.child("id_usuario").getValue().toString();
                         if(user_id.equals(userID))
-                        dispositivos.add(new Dispositivos(id, alias, mac,""));
+                        dispositivos.add(new Dispositivos(id, alias, mac,user_id));
                     }
 
                     ArrayAdapter<Dispositivos> arrayAdapter = new ArrayAdapter<>(AddRecordatorioActivity.this, android.R.layout.simple_dropdown_item_1line, dispositivos);
@@ -244,6 +245,22 @@ public class AddRecordatorioActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void listaPacientes(){
+        List<paciente> pacientes = new ArrayList<>();
+        mDataBase.child("registro").orderByChild("id_usuario").equalTo(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });

@@ -5,185 +5,401 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar"></include>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
 
-    <ImageButton
-        android:id="@+id/btnRecordatorios"
-        android:layout_width="80dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="@android:dimen/app_icon_size"
-        android:background="@drawable/boton_recordatorios"
-        android:clickable="true"
-        android:gravity="center"
-        android:onClick="btnRecordatorios" />
-    <TextView
-        android:id="@+id/textView_titulo_menu_instituciones"
-        android:layout_width="205dp"
-        android:layout_height="wrap_content"
-        android:text="REMINDERS"
-        android:textColor="#266195"
-        android:gravity="center"
-        android:textSize="18sp"
-        android:onClick="btnRecordatorios"
-        android:textStyle="bold|italic" />
-    <TextView
-        android:layout_width="205dp"
-        android:layout_height="wrap_content"
-        android:text="Add, Modify and Delete your reminders"
-        android:textColor="#000000"
-        android:gravity="center"
-        android:onClick="btnRecordatorios"
-        android:textSize="12sp"
-        android:textStyle="bold|italic" />
-
-
-    <ImageButton
-        android:id="@+id/btnReportes"
-        android:layout_width="80dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="@android:dimen/app_icon_size"
-        android:background="@drawable/boton_reportes"
-        android:clickable="true"
-        android:gravity="center"
-        android:onClick="btnReport" />
-    <TextView
-        android:id="@+id/textView_titulo_menu_intituciones"
-        android:layout_width="205dp"
-        android:layout_height="wrap_content"
-        android:text="REPORTS"
-        android:textColor="#266195"
-        android:gravity="center"
-        android:textSize="18sp"
-        android:onClick="btnReport"
-        android:textStyle="bold|italic" />
-    <TextView
-        android:layout_width="205dp"
-        android:layout_height="wrap_content"
-        android:text="Show the detail of the assigned activities"
-        android:textColor="#000000"
-        android:gravity="center"
-        android:textSize="12sp"
-        android:onClick="btnReport"
-        android:textStyle="bold|italic" />
-
-
-    <ImageButton
-        android:id="@+id/btnReport"
-        android:layout_width="80dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="@android:dimen/app_icon_size"
-        android:background="@drawable/boton_historial"
-        android:clickable="true"
-        android:gravity="center"
-        android:onClick="btnHistorial" />
-    <TextView
-        android:id="@+id/textView_titulo_enu_intituciones"
-        android:layout_width="205dp"
-        android:layout_height="wrap_content"
-        android:text="HISTORY"
-        android:textColor="#266195"
-        android:gravity="center"
-        android:textSize="18sp"
-        android:onClick="btnHistorial"
-        android:textStyle="bold|italic" />
-    <TextView
-        android:layout_width="205dp"
-        android:layout_height="wrap_content"
-        android:text="Display information on assigned activities"
-        android:textColor="#000000"
-        android:gravity="center"
-        android:textSize="12sp"
-        android:onClick="btnHistorial"
-        android:textStyle="bold|italic" />
-
-    <Button
-        android:id="@+id/button2"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="btnAddDispo"
-        android:text="add dispo" />
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="btnManagerUser"
-        android:text="add users" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-</LinearLayout>
-<!--
-    <Button
-        android:id="@+id/btncalendario"
-        android:layout_width="140dp"
-        android:layout_height="116dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="98dp"
-        android:onClick="BtnRecor"
-        android:text="calendario" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnadddispo"
-        android:layout_width="140dp"
-        android:layout_height="116dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="254dp"
-        android:onClick="btnAddDispo"
-        android:text="add dispositivo" />
+                <ImageButton
+                    android:id="@+id/btnRecordatorios"
+                    android:layout_width="80dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="@android:dimen/app_icon_size"
+                    android:background="@drawable/boton_recordatorios"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:onClick="btnRecordatorios" />
 
-    <Button
-        android:id="@+id/btnconfig"
-        android:layout_width="140dp"
-        android:layout_height="116dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="225dp"
-        android:layout_marginTop="257dp"
-        android:onClick="BtnConfig"
-        android:text="confuguracion" />
+                <TextView
+                    android:id="@+id/textView_titulo_menu_instituciones"
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:onClick="btnRecordatorios"
+                    android:text="REMINDERS"
+                    android:textColor="#266195"
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic" />
 
-    <Button
-        android:id="@+id/btncerrars"
-        android:layout_width="140dp"
-        android:layout_height="116dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="557dp"
-        android:onClick="BtnCerrarSesion"
-        android:text="cerrarsesion" />
+                <TextView
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:onClick="btnRecordatorios"
+                    android:text="Add, Modify and Delete your reminders"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:textStyle="bold|italic" />
+            </LinearLayout>
 
-    <Button
-        android:id="@+id/btnmanagerusers"
-        android:layout_width="154dp"
-        android:layout_height="120dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="42dp"
-        android:layout_marginBottom="515dp"
-        android:onClick="btnManagerUser"
-        android:text="manager users" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="138dp"
-        android:layout_height="118dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="52dp"
-        android:layout_marginBottom="224dp"
-        android:onClick="btnReport"
-        android:text="REPORTE" />-->
+            <!--<LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnRecordatori"
+                    android:layout_width="80dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="@android:dimen/app_icon_size"
+                    android:background="@drawable/boton_recordatorios"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:onClick="btnAddDispo" />
+
+                <TextView
+                    android:id="@+id/textView_tito_menu_instituciones"
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:onClick="btnAddDispo"
+                    android:text="DEVICES"
+                    android:textColor="#266195"
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:onClick="btnAddDispo"
+                    android:text="Add, Modify and Delete your reminders devices"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:textStyle="bold|italic" />
+            </LinearLayout>-->
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <ImageButton
+                    android:id="@+id/btnReportes"
+                    android:layout_width="80dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="@android:dimen/app_icon_size"
+                    android:background="@drawable/boton_reportes"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:onClick="btnReport" />
+
+                <TextView
+                    android:id="@+id/textView_titulo_menu_intituciones"
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:onClick="btnReport"
+                    android:text="REPORTS"
+                    android:textColor="#266195"
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:onClick="btnReport"
+                    android:text="Show the detail of the assigned activities"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:textStyle="bold|italic" />
+
+
+            </LinearLayout>
+
+            <!--<LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnReport"
+                    android:layout_width="80dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="@android:dimen/app_icon_size"
+                    android:background="@drawable/boton_historial"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:onClick="btnHistorial" />
+
+                <TextView
+                    android:id="@+id/textView_titulo_enu_intituciones"
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:onClick="btnHistorial"
+                    android:text="HISTORY"
+                    android:textColor="#266195"
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:onClick="btnHistorial"
+                    android:text="Display information on assigned activities"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:textStyle="bold|italic" />
+
+
+            </LinearLayout>-->
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnHistorial"
+                    android:layout_width="80dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="@android:dimen/app_icon_size"
+                    android:background="@drawable/boton_historial"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:onClick="btnHistorial" />
+
+                <TextView
+                    android:id="@+id/textView_titulo_enu_intituciones"
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:onClick="btnHistorial"
+                    android:text="HISTORY"
+                    android:textColor="#266195"
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:onClick="btnHistorial"
+                    android:text="Display information on assigned activities"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:textStyle="bold|italic" />
+
+
+            </LinearLayout>
+            <!--<LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnReporte"
+                    android:layout_width="80dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="@android:dimen/app_icon_size"
+                    android:background="@drawable/boton_reportes"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:onClick="btnManagerUser" />
+
+                <TextView
+                    android:id="@+id/textView_titulo_men_intituciones"
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:onClick="btnManagerUser"
+                    android:text="MANAGER USER"
+                    android:textColor="#266195"
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:onClick="btnManagerUser"
+                    android:text="Show the detail of the assigned activities"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:textStyle="bold|italic" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/btnRport"
+                        android:layout_width="80dp"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="@android:dimen/app_icon_size"
+                        android:background="@drawable/boton_reportes"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:onClick="BtnConfig" />
+
+                    <TextView
+                        android:id="@+id/textView_titulo_men_intitucions"
+                        android:layout_width="205dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:onClick="BtnConfig"
+                        android:text="CONFIG"
+                        android:textColor="#266195"
+                        android:textSize="18sp"
+                        android:textStyle="bold|italic" />
+
+                    <TextView
+                        android:layout_width="205dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:onClick="BtnConfig"
+                        android:text="Show the detail of the assigned activities"
+                        android:textColor="#000000"
+                        android:textSize="12sp"
+                        android:textStyle="bold|italic" />
+                </LinearLayout>
+            </LinearLayout>-->
+        </LinearLayout>
+        <!-- <Button
+             android:id="@+id/button2"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:onClick="btnAddDispo"
+             android:text="add dispo" />
+
+         <Button
+             android:id="@+id/button5"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:onClick="btnManagerUser"
+             android:text="add users" />-->
+
+    </LinearLayout>
+    <!--
+        <Button
+            android:id="@+id/btncalendario"
+            android:layout_width="140dp"
+            android:layout_height="116dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="98dp"
+            android:onClick="BtnRecor"
+            android:text="calendario" />
+
+        <Button
+            android:id="@+id/btnadddispo"
+            android:layout_width="140dp"
+            android:layout_height="116dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="254dp"
+            android:onClick="btnAddDispo"
+            android:text="add dispositivo" />
+
+        <Button
+            android:id="@+id/btnconfig"
+            android:layout_width="140dp"
+            android:layout_height="116dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="225dp"
+            android:layout_marginTop="257dp"
+            android:onClick="BtnConfig"
+            android:text="confuguracion" />
+
+        <Button
+            android:id="@+id/btncerrars"
+            android:layout_width="140dp"
+            android:layout_height="116dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="557dp"
+            android:onClick="BtnCerrarSesion"
+            android:text="cerrarsesion" />
+
+        <Button
+            android:id="@+id/btnmanagerusers"
+            android:layout_width="154dp"
+            android:layout_height="120dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="515dp"
+            android:onClick="btnManagerUser"
+            android:text="manager users" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="138dp"
+            android:layout_height="118dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="52dp"
+            android:layout_marginBottom="224dp"
+            android:onClick="btnReport"
+            android:text="REPORTE" />-->
 
 </RelativeLayout>

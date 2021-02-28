@@ -3,15 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/opc_reportes"
-        android:title="Reportes"
+        android:title="Add patient"
         app:showAsAction="never" />
     <item
         android:id="@+id/opc_actualizarDatosPersonales"
-        android:title="Actualizar datos personales"
+        android:title="Update personal data"
         app:showAsAction="never" />
     <item
+        android:id="@+id/opc_reporte1"
+        android:title="Update patient data"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/opc_actualizarDatosPersonals1"
+        android:title="Report"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/opc_actualizarDatosPersonales1"
+        android:title="Assign device"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/opc_acualizarDatosPersonales1"
+        android:title="Device"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/opc_cerrar_sesion"
-        android:title="Cerrar sesión"
+        android:title="Log out"
         app:showAsAction="never" />
 
 

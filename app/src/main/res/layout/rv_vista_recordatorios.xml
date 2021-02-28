@@ -22,8 +22,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="12dp"
             android:orientation="vertical"
-            android:gravity="center"
-            >
+            android:gravity="center">
 
 
 
