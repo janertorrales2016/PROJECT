@@ -82,6 +82,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.7'
 
-
+//PDF
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
 }
 apply plugin: 'com.google.gms.google-services'

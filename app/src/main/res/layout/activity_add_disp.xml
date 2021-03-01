@@ -87,31 +87,39 @@
         android:padding="16dp"
         android:textColorHighlight="#266195"
         android:textColorLink="#266195" />
+    <Spinner
+        android:id="@+id/splistapacientesAddDisp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_below="@+id/txtMac"
+        android:textAlignment="viewStart"
+        android:hint="Seleccione dispositivo "/>'
 
     <LinearLayout
-        android:layout_width="396dp"
-        android:layout_height="170dp"
-        android:layout_below="@+id/txtMac"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="-8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/splistapacientesAddDisp"
         android:gravity="center">
 
         <Button
             android:id="@+id/btnSave"
-            android:layout_width="370dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtMac"
-            android:layout_alignParentEnd="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="45dp"
-            android:layout_marginEnd="24dp"
+            android:layout_below="@+id/splistapacientesAddDisp"
+
             android:background="@drawable/round_bg"
             android:onClick="btnSaveDisp"
             android:text="SAVE"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
     </LinearLayout>
-    <!--<TextView
+    <!--<TextView   android:layout_marginEnd="24dp"
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
