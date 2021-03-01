@@ -72,7 +72,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.0-rc03'
 
     //Report
-    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.0-beta1'
+    implementation 'com.itextpdf:itextg:5.5.10'
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
     // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:26.2.0')
 

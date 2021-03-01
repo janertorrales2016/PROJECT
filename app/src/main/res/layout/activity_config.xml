@@ -37,7 +37,6 @@
         android:layout_marginStart="33dp"
         android:layout_marginTop="372dp"
         android:background="@drawable/round_border"
-        android:drawableStart="@drawable/administrator_male_20px"
         android:padding="12dp"
         android:text=" Role" />
 
@@ -51,7 +50,6 @@
         android:layout_marginStart="29dp"
         android:layout_marginTop="254dp"
         android:background="@drawable/round_border"
-        android:drawableStart="@drawable/home_20px"
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="12dp"
@@ -67,7 +65,6 @@
         android:layout_marginStart="29dp"
         android:layout_marginTop="197dp"
         android:background="@drawable/round_border"
-        android:drawableStart="@drawable/add_phone_20px"
         android:ems="10"
         android:inputType="phone"
         android:padding="12dp"
@@ -84,7 +81,6 @@
         android:layout_marginStart="29dp"
         android:layout_marginTop="137dp"
         android:background="@drawable/round_border"
-        android:drawableStart="@drawable/registration_20px"
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="12dp"
@@ -115,13 +111,11 @@
         android:layout_marginTop="310dp"
         android:layout_marginEnd="18dp"
         android:background="@drawable/round_border"
-        android:drawableStart="@drawable/calendar_11_20px"
         android:ems="10"
         android:hint="@string/formato_fecha"
         android:inputType="date"
         android:padding="12dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
     <ImageButton
         android:id="@+id/ib_obtener_fecha"
@@ -137,7 +131,6 @@
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintLeft_toRightOf="@+id/et_mostrar_fecha_picker"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:ignore="ContentDescription" />
 
     <Button
@@ -152,7 +145,7 @@
         android:layout_marginTop="429dp"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="254dp"
-        android:background="@color/white"
+
         android:background="@drawable/round_bg"
         android:onClick="btnsave"
         android:text="SAVE"
@@ -183,8 +176,7 @@
         android:layout_marginStart="29dp"
         android:layout_marginBottom="150dp"
         android:background="@drawable/round_border"
-        android:drawableStart="@drawable/keepass_20px"
-        android:ems="10"
+         android:ems="10"
         android:hint=" New Password"
         android:inputType="textPassword"
         android:padding="12dp" />
@@ -201,8 +193,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="89dp"
         android:background="@drawable/round_border"
-        android:drawableStart="@drawable/keepass_20px"
-        android:ems="10"
+       android:ems="10"
         android:hint=" Repeat Password"
         android:inputType="textPassword"
         android:padding="12dp" />
@@ -216,7 +207,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="27dp"
         android:layout_marginBottom="28dp"
-        android:background="@color/white"
         android:background="@drawable/round_bg"
         android:onClick="btnUpdatePassword"
         android:text="Save"
