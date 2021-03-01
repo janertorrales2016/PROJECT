@@ -36,6 +36,7 @@ import java.util.List;
 import java.util.Map;
 
 import uteq.student.project.Model.Dispositivos;
+import uteq.student.project.Model.Info;
 import uteq.student.project.Model.paciente;
 
 public class AddRecordatorioActivity extends AppCompatActivity {
@@ -46,28 +47,32 @@ public class AddRecordatorioActivity extends AppCompatActivity {
     String userID;
 
     DatabaseReference mDataBase;
-    Spinner spListaDispositivos, repeticionrecordatorio;
+    Spinner spListaDispositivos, repeticionrecordatorio, spListaPacientes;
 
     String hour = "";
     String minute = "";
 
-    String macSeleccionada = "";
+    String macSeleccionada = "", id_us;
     String tipoRepeticion = "No repeat";
 
+    String[] aux;
+
     int intervaloHoras = 0, veces = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_recordatorio);
 
         //CARGAR TOOLBAR
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         tvTitulo = (TextView) findViewById(R.id.tituloRecordatorio);
         tvHora = (TextView) findViewById(R.id.hora);
         tvFecha = (TextView) findViewById(R.id.fecha);
-        spListaDispositivos = findViewById(R.id.splistadispositivos);
+        spListaDispositivos = (Spinner) findViewById(R.id.splistadispositivos);
+        spListaPacientes = (Spinner) findViewById(R.id.splistapacientes);
 
         mDataBase = FirebaseDatabase.getInstance().getReference();
 
@@ -75,7 +80,8 @@ public class AddRecordatorioActivity extends AppCompatActivity {
         userID = getIntent().getStringExtra("userID");
 
         tvFecha.setText(fecha);
-        listaDispositivos();
+        listaPacientes();
+        //listaDispositivos(userID);
 
 
         repeticionrecordatorio = (Spinner) findViewById(R.id.sprepetirrecordatorio);
@@ -208,9 +214,10 @@ public class AddRecordatorioActivity extends AppCompatActivity {
             }
         });
     }
-    public void listaDispositivos() {
+
+    public void listaDispositivos(String id_us) {
         List<Dispositivos> dispositivos = new ArrayList<>();
-        mDataBase.child("dispositivos").child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+        mDataBase.child("dispositivos").orderByChild("id_usuario").equalTo(id_us).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -219,9 +226,9 @@ public class AddRecordatorioActivity extends AppCompatActivity {
                         String id = ds.getKey();
                         String alias = ds.child("alias").getValue().toString();
                         String mac = ds.child("mac").getValue().toString();
-                        String user_id=ds.child("id_usuario").getValue().toString();
-                        if(user_id.equals(userID))
-                        dispositivos.add(new Dispositivos(id, alias, mac,user_id));
+                        String user_id = ds.child("id_usuario").getValue().toString();
+                        if (user_id.equals(user_id))
+                            dispositivos.add(new Dispositivos(id, alias, mac, user_id));
                     }
 
                     ArrayAdapter<Dispositivos> arrayAdapter = new ArrayAdapter<>(AddRecordatorioActivity.this, android.R.layout.simple_dropdown_item_1line, dispositivos);
@@ -250,13 +257,66 @@ public class AddRecordatorioActivity extends AppCompatActivity {
         });
     }
 
-    public void listaPacientes(){
-        List<paciente> pacientes = new ArrayList<>();
-        mDataBase.child("registro").orderByChild("id_usuario").equalTo(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+    public void listaPacientes() {
 
+        final ArrayList<Info> ListItems = new ArrayList<>();
+
+        //List<Info> pacientes = new ArrayList<>();
+        mDataBase.child("registro").child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    int i = 0;
+                    for (DataSnapshot ds : snapshot.getChildren()) {
+                        String id = ds.getKey();
+                        i++;
+                    }
 
+                    aux = new String[i];
+                    int j = 0;
+                    for (DataSnapshot ds : snapshot.getChildren()) {
+                        String id = ds.getKey();
+                        aux[j] = id;
+                        j++;
+                    }
+
+                    for(int m=0;m<aux.length;m++)
+                    {
+                        mDataBase.child("usuario").child(aux[m]).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.exists()) {
+                                    String id2 = snapshot.getKey();
+                                    String nombre = snapshot.child("nombre").getValue().toString();
+                                    String apellido = snapshot.child("apellido").getValue().toString();
+                                    ListItems.add(new Info(id2,apellido,nombre));
+                                }
+
+                                ArrayAdapter<Info> arrayAdapter = new ArrayAdapter<>(AddRecordatorioActivity.this, android.R.layout.simple_dropdown_item_1line, ListItems);
+                                spListaPacientes.setAdapter(arrayAdapter);
+                                spListaPacientes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                    @Override
+                                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                        id_us = ListItems.get(position).getId();
+                                        //Toast.makeText(AddRecordatorioActivity.this, id_us, Toast.LENGTH_SHORT).show();
+                                        listaDispositivos(id_us);
+                                    }
+
+                                    @Override
+                                    public void onNothingSelected(AdapterView<?> parent) {
+
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+
+                }
             }
 
             @Override
@@ -264,6 +324,48 @@ public class AddRecordatorioActivity extends AppCompatActivity {
 
             }
         });
+
+
+      /*  List<paciente> pacientes = new ArrayList<>();
+        //Toast.makeText(AddRecordatorioActivity.this, userID, Toast.LENGTH_SHORT).show();
+        mDataBase.child("registro").child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+
+                    for (DataSnapshot ds : snapshot.getChildren()) {
+                        String id= ds.getKey();
+                        String nombre = ds.child("nombre").getValue().toString();
+
+                        pacientes.add(new paciente(nombre,id));
+                    }
+
+
+                    ArrayAdapter<paciente> arrayAdapter = new ArrayAdapter<>(AddRecordatorioActivity.this, android.R.layout.simple_dropdown_item_1line, pacientes);
+                    spListaPacientes.setAdapter(arrayAdapter);
+
+                    spListaPacientes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                            id_us = pacientes.get(position).getId();
+                            //Toast.makeText(AddRecordatorioActivity.this, id_us, Toast.LENGTH_SHORT).show();
+                            listaDispositivos(id_us);
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(AddRecordatorioActivity.this, String.valueOf(error), Toast.LENGTH_SHORT).show();
+            }
+        });*/
     }
 
     public void agregarRecordatorio(View view) {
@@ -306,7 +408,7 @@ public class AddRecordatorioActivity extends AppCompatActivity {
                     if (minutos.length() == 1)
                         minutos = "0" + minutos;
 
-                    ingresarRecordatorio(dia+"-"+mes+"-"+anio,horas+":"+minutos,tvTitulo.getText().toString());
+                    ingresarRecordatorio(dia + "-" + mes + "-" + anio, horas + ":" + minutos, tvTitulo.getText().toString());
 
                     //  String spinnerText = spListaDispositivos.getSelectedItem().toString();
 
@@ -411,8 +513,8 @@ public class AddRecordatorioActivity extends AppCompatActivity {
             horas = c.get(Calendar.HOUR);
             minutos = c.get(Calendar.MINUTE);
             int am_pm = c.get(Calendar.AM_PM);
-            if(am_pm==1)
-                horas=horas+12;
+            if (am_pm == 1)
+                horas = horas + 12;
         } else {
             horas = Integer.parseInt(hour);
             minutos = Integer.parseInt(minute);
@@ -441,31 +543,23 @@ public class AddRecordatorioActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_toolbar,menu);
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        //Toast.makeText(getApplicationContext(), Integer.toString(id), Toast.LENGTH_LONG).show();
-        if(id == R.id.opc_reportes) {
-            //Intent intent = new Intent(this, activity_suscripciones.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            //startActivity(intent);
-        }
-        if(id == R.id.opc_actualizarDatosPersonales) {
-            //Intent intent = new Intent(this, activity_creditos.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            //startActivity(intent);
-        }
 
-        if(id == R.id.opc_cerrar_sesion) {
+
+        if (id == R.id.opc_cerrar_sesion) {
             /*Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             this.finish();*/
             FirebaseAuth.getInstance().signOut();
-            Toast.makeText(AddRecordatorioActivity.this,"Cerrar sesion", Toast.LENGTH_SHORT).show();
-            startActivity( new Intent(AddRecordatorioActivity.this, StartActivity.class));
+            Toast.makeText(AddRecordatorioActivity.this, "Cerrar sesion", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(AddRecordatorioActivity.this, StartActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }
