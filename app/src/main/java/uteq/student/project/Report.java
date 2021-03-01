@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -62,7 +63,6 @@ public class Report extends AppCompatActivity {
 
 
     public static File pFile;
-    private File payfile;
     private PDFView pdfView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,18 +84,8 @@ public class Report extends AppCompatActivity {
 
             }
         });
-
-        //
         paymentUsersList = new ArrayList<>();
-
-        //create files in charity care folder
-        payfile = new File("/storage/emulated/0/Report/");
-
-        //check if they exist, if not create them(directory)
-        if ( !payfile.exists()) {
-            payfile.mkdirs();
-        }
-        pFile = new File(payfile, "PaymentUsers.pdf");
+        pFile = new File(Environment.getExternalStorageDirectory(), "GFG.pdf");
 
         //fetch payment and disabled users details;
         fetchPaymentUsers();
