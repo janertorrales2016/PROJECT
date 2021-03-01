@@ -37,8 +37,10 @@
         android:layout_marginStart="33dp"
         android:layout_marginTop="372dp"
         android:background="@drawable/round_border"
+        android:drawableStart="@drawable/collaborator_male_20px"
         android:padding="12dp"
-        android:text=" Role" />
+        android:text=" Role"
+        android:textColor="#131313" />
 
     <EditText
         android:id="@+id/txtdireccion"
@@ -50,6 +52,7 @@
         android:layout_marginStart="29dp"
         android:layout_marginTop="254dp"
         android:background="@drawable/round_border"
+        android:drawableStart="@drawable/warehouse_20px"
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="12dp"
@@ -65,6 +68,7 @@
         android:layout_marginStart="29dp"
         android:layout_marginTop="197dp"
         android:background="@drawable/round_border"
+        android:drawableStart="@drawable/hand_with_smartphone_20px"
         android:ems="10"
         android:inputType="phone"
         android:padding="12dp"
@@ -81,6 +85,7 @@
         android:layout_marginStart="29dp"
         android:layout_marginTop="137dp"
         android:background="@drawable/round_border"
+        android:drawableStart="@drawable/male_user_20px"
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="12dp"
@@ -111,11 +116,13 @@
         android:layout_marginTop="310dp"
         android:layout_marginEnd="18dp"
         android:background="@drawable/round_border"
+        android:drawableStart="@drawable/pay_date_20px"
         android:ems="10"
         android:hint="@string/formato_fecha"
         android:inputType="date"
         android:padding="12dp"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        android:textColor="#131313"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <ImageButton
         android:id="@+id/ib_obtener_fecha"
@@ -144,7 +151,11 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="429dp"
         android:layout_marginEnd="25dp"
-        android:layout_marginBottom="254dp"/>
+        android:background="@drawable/round_bg"
+        android:layout_marginBottom="254dp"
+        android:text="Save"
+        android:textColor="#FAF6F6"
+        />
 <TextView
         android:id="@+id/textView12"
         android:layout_width="match_parent"
@@ -169,7 +180,8 @@
         android:layout_marginStart="29dp"
         android:layout_marginBottom="150dp"
         android:background="@drawable/round_border"
-         android:ems="10"
+        android:drawableStart="@drawable/keepass_20px"
+        android:ems="10"
         android:hint=" New Password"
         android:inputType="textPassword"
         android:padding="12dp" />
@@ -186,7 +198,8 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="89dp"
         android:background="@drawable/round_border"
-       android:ems="10"
+        android:drawableStart="@drawable/keepass_20px"
+        android:ems="10"
         android:hint=" Repeat Password"
         android:inputType="textPassword"
         android:padding="12dp" />
