@@ -2,28 +2,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/opc_reportes"
+        android:id="@+id/opc_add_Paciente"
         android:title="Add patient"
         app:showAsAction="never" />
     <item
-        android:id="@+id/opc_actualizarDatosPersonales"
+        android:id="@+id/opc_actualizar_Datos_Personales"
         android:title="Update personal data"
         app:showAsAction="never" />
     <item
-        android:id="@+id/opc_reporte1"
+        android:id="@+id/opc_actualizar_Datos_Paciente"
         android:title="Update patient data"
         app:showAsAction="never" />
     <item
-        android:id="@+id/opc_actualizarDatosPersonals1"
+        android:id="@+id/opc_Reporte"
         android:title="Report"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/opc_actualizarDatosPersonales1"
+        android:id="@+id/opc_asignar_dispositivo"
         android:title="Assign device"
         app:showAsAction="never" />
     <item
-        android:id="@+id/opc_acualizarDatosPersonales1"
+        android:id="@+id/opc_ver_dispositivos"
         android:title="Device"
         app:showAsAction="never" />
 

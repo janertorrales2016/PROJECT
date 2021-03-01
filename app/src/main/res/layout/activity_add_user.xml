@@ -82,6 +82,7 @@
         android:text=" Alias"
         tools:layout_editor_absoluteX="94dp"
         tools:layout_editor_absoluteY="123dp" />
+    <!--android:drawableStart="@drawable/registration_20px"-->
 
     <EditText
         android:id="@+id/textpass"

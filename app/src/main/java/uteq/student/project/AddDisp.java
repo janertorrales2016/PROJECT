@@ -94,15 +94,7 @@ public class AddDisp extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int id = item.getItemId();
-        //Toast.makeText(getApplicationContext(), Integer.toString(id), Toast.LENGTH_LONG).show();
-        if(id == R.id.opc_reportes) {
-            //Intent intent = new Intent(this, activity_suscripciones.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            //startActivity(intent);
-        }
-        if(id == R.id.opc_actualizarDatosPersonales) {
-            //Intent intent = new Intent(this, activity_creditos.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            //startActivity(intent);
-        }
+
 
         if(id == R.id.opc_cerrar_sesion) {
             /*Intent intent = new Intent(this, MainActivity.class);

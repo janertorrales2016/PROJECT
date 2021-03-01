@@ -1,5 +1,6 @@
 package uteq.student.project.Model;
 
+
 public class paciente {
     private String nombre;
     private String id;
@@ -8,6 +9,7 @@ public class paciente {
         this.nombre = nombre;
         this.id = id;
     }
+
     public String getId() {
         return id;
     }
@@ -15,6 +17,10 @@ public class paciente {
     public void setId(String id) {
         this.id = id;
     }
+
+
+
+    public  paciente(){}
 
     public String getNombre() {
         return nombre;
@@ -25,8 +31,18 @@ public class paciente {
         this.nombre = nombre;
     }
 
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return nombre;
     }
+
 }

@@ -94,7 +94,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnHistorial(View view){
-        Intent intent = new Intent(getApplication(), VistaRecordatoriosActivity.class);
+        /*Intent intent = new Intent(getApplication(), VistaRecordatoriosActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("userID", userID);
+        bundle.putString("fecha", "sinFecha");
+        intent.putExtras(bundle);
+        startActivity(intent);*/
+        Intent intent = new Intent(getApplication(), PacientesActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("userID", userID);
         bundle.putString("fecha", "sinFecha");
@@ -138,11 +144,29 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int id = item.getItemId();
         //Toast.makeText(getApplicationContext(), Integer.toString(id), Toast.LENGTH_LONG).show();
-        if(id == R.id.opc_reportes) {
-            //Intent intent = new Intent(this, activity_suscripciones.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        if(id == R.id.opc_add_Paciente) {
+            Intent intent = new Intent(this, AddUser.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        }
+        if(id == R.id.opc_actualizar_Datos_Personales) {
+            Intent intent = new Intent(this, ConfigActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        }
+
+        if(id == R.id.opc_actualizar_Datos_Paciente) {
+            //Intent intent = new Intent(this, activity_creditos.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             //startActivity(intent);
         }
-        if(id == R.id.opc_actualizarDatosPersonales) {
+        if(id == R.id.opc_Reporte) {
+            Intent intent = new Intent(this, Report.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        }
+
+        if(id == R.id.opc_asignar_dispositivo) {
+            Intent intent = new Intent(this, AddDisp.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        }
+        if(id == R.id.opc_ver_dispositivos) {
             //Intent intent = new Intent(this, activity_creditos.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             //startActivity(intent);
         }
@@ -151,9 +175,14 @@ public class MainActivity extends AppCompatActivity {
             /*Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             this.finish();*/
+
+            /*FirebaseAuth.getInstance().signOut();
+            Toast.makeText(MainActivity.this,"Cerrar sesion", Toast.LENGTH_SHORT).show();
+            startActivity( new Intent(MainActivity.this, LoginActivity.class));*/
+
             FirebaseAuth.getInstance().signOut();
             Toast.makeText(MainActivity.this,"Cerrar sesion", Toast.LENGTH_SHORT).show();
-            startActivity( new Intent(MainActivity.this, LoginActivity.class));
+            startActivity( new Intent(MainActivity.this, StartActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

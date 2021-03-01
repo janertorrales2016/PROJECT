@@ -229,7 +229,7 @@ public class Report extends AppCompatActivity {
         BaseColor colorWhite = WebColors.getRGBColor("#ffffff");
         BaseColor colorBlue = WebColors.getRGBColor("#056FAA");
         BaseColor grayColor = WebColors.getRGBColor("#425066");
-        
+
         Font white = new Font(Font.FontFamily.HELVETICA, 15.0f, Font.BOLD, colorWhite);
         FileOutputStream output = new FileOutputStream(pFile);
         Document document = new Document(PageSize.A4);
