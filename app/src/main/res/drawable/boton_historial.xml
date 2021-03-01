@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@drawable/historial" android:state_pressed="true" /> <!-- presionado -->
-    <item android:drawable="@drawable/historial" android:state_focused="true" /> <!-- centrado -->
-    <item android:drawable="@drawable/historial" /> <!-- Por Defecto -->
+    <item android:drawable="@drawable/order_history_45px" android:state_pressed="true" /> <!-- presionado -->
+    <item android:drawable="@drawable/order_history_45px" android:state_focused="true" /> <!-- centrado -->
+    <item android:drawable="@drawable/order_history_45px" /> <!-- Por Defecto -->
 
 </selector>

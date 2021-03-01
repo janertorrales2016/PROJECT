@@ -32,7 +32,9 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="102dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/round_bg"
         android:onClick="btnGenerate"
-        android:text="Button" />
+        android:text="Button"
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>
