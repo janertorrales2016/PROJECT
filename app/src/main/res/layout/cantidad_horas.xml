@@ -11,8 +11,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:background="@drawable/round_border"
+        android:drawableStart="@drawable/time_machine_20px"
+        android:hint=" Interval hours"
         android:inputType="number"
-        android:hint="Interval hours"/>
+        android:padding="16dp"/>
 
     <EditText
         android:id="@+id/vecesXhoras"
@@ -22,6 +25,9 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:inputType="number"
-        android:hint="Hours to be repeated"/>
+        android:hint=" Hours to be repeated"
+        android:background="@drawable/round_border"
+        android:drawableStart="@drawable/plus_1_hour_20px"
+        android:padding="16dp"/>
 
 </LinearLayout>
