@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".LoginActivity">
-<!-- androidx.constraintlayout.widget.ConstraintLayout-->
+    <!-- androidx.constraintlayout.widget.ConstraintLayout-->
     <!--<ImageView
         android:id="@+id/circle5"
         android:layout_width="38dp"
