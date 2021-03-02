@@ -41,7 +41,7 @@ public class AddUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
 
-        mReference = FirebaseDatabase.getInstance().getReference("registro").child(IdOring);
+/*        mReference = FirebaseDatabase.getInstance().getReference("registro").child(IdOring);
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -56,7 +56,7 @@ public class AddUser extends AppCompatActivity {
 
             }
         });
-
+*/
     }
 
 
@@ -71,8 +71,10 @@ public class AddUser extends AppCompatActivity {
         direccion = (EditText) findViewById(R.id.txtDireccionAM);
         nacimiento = (EditText) findViewById(R.id.txtNacimientoAM);
 
+       // Toast.makeText(AddUser.this,IdOring, Toast.LENGTH_SHORT).show();
 
        // if (usuario.getText().toString().length() > 0 && contraseña.getText().toString().length() > 0 && nombre.getText().toString().length() > 0 && apellido.getText().toString().length() > 0) {
+        if (usuario.getText().toString().length() > 0 && contraseña.getText().toString().length() > 0){
             auth.createUserWithEmailAndPassword(usuario.getText().toString(), contraseña.getText().toString())
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -84,18 +86,40 @@ public class AddUser extends AppCompatActivity {
                                 map.put("direccion", direccion.getText().toString());
                                 map.put("celular", telefono.getText().toString());
                                 map.put("fecha_nacimiento", nacimiento.getText().toString());
-                                SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                                 String currentDateandTime = sdf.format(new Date());
                                 map.put("fecha_create", currentDateandTime);
                                 map.put("fecha_update", currentDateandTime);
                                 map.put("rol", "AdultoMayor");
                                 FirebaseUser user2 = FirebaseAuth.getInstance().getCurrentUser();
                                 String uid = user2.getUid();
-                                FirebaseDatabase.getInstance().getReference().child("usuario").child(uid).setValue(map);
-                                FirebaseDatabase.getInstance().getReference().child("registro")
-                                        .child(IdOring).child(uid).child("nombre").setValue("valor");
-                                Toast toast = Toast.makeText(getApplicationContext(), "Add Succesfull", Toast.LENGTH_SHORT);
-                                toast.show();
+                                //Toast.makeText(AddUser.this,uid, Toast.LENGTH_SHORT).show();
+                                FirebaseDatabase.getInstance().getReference().child("usuario").child(uid).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task2) {
+                                        if(task2.isSuccessful()) {
+                                            FirebaseDatabase.getInstance().getReference().child("registro")
+                                                    .child(IdOring).child(uid).child("nombre").setValue("valor").addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task3) {
+                                                    if(task3.isSuccessful()) {
+                                                        Toast toast = Toast.makeText(getApplicationContext(), "Add Succesfull", Toast.LENGTH_SHORT);
+                                                        toast.show();
+                                                        finish();
+                                                    }
+                                                    else
+                                                        Toast.makeText(AddUser.this,"Register Failed", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                        }
+                                        else {
+                                            Toast.makeText(AddUser.this,"Register Failed", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+
+
+
                             }
                             else{
                                 Toast toast = Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT);
@@ -103,6 +127,8 @@ public class AddUser extends AppCompatActivity {
                             }
                         }
                     });
-        //}
+        }
+        else
+            Toast.makeText(AddUser.this,"Enter user and Password", Toast.LENGTH_SHORT).show();
     }
 }

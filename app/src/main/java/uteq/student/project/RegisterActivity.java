@@ -64,7 +64,6 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(RegisterActivity.this, "Register user succeful", Toast.LENGTH_SHORT).show();
                     Map<String, Object> map= new HashMap<>();
                     map.put("nombre", "" );
                     map.put("apellido", "" );
@@ -82,6 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task2) {
                             if(task2.isSuccessful()){
                                 //startActivity( new Intent(RegisterActivity.this, MainActivity.class));
+                                Toast.makeText(RegisterActivity.this, "Register user succeful", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplication(), LoginActivity.class);
                                 Bundle bundle = new Bundle();
                                 bundle.putString("inicio", "inicio");

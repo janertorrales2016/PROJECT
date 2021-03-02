@@ -91,7 +91,7 @@
         android:background="@drawable/round_border"
         android:drawableStart="@drawable/lock_20px"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:padding="16dp"
         android:hint=" Password"
         tools:layout_editor_absoluteX="90dp"
