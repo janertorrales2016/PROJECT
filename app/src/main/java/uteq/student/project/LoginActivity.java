@@ -32,6 +32,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -40,6 +45,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button login;
     private FirebaseAuth auth;
 
+    DatabaseReference mDataBase;
+
     SignInButton btSignIn;
     GoogleSignInClient googleSignInClient;
 
@@ -47,6 +54,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        mDataBase = FirebaseDatabase.getInstance().getReference();
 
         email = findViewById(R.id.inputEmail);
         password = findViewById(R.id.inputPassword);
@@ -142,8 +151,43 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser(String email, String pass) {
-
         auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    /*Toast.makeText(LoginActivity.this, "Login correcto", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();*/
+                    String id = auth.getCurrentUser().getUid();
+                    mDataBase.child("usuario").child(id).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                String rol = snapshot.child("rol").getValue().toString();
+                                // Toast.makeText(AgregarTurnosActivity.this, us, Toast.LENGTH_SHORT).show();
+                                if (rol.equals("enfermero")) {
+                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                    finish();
+                                }
+                                else{
+                                   // startActivity(new Intent(LoginActivity.this, AdultoMayorActivity.class));
+                                    //finish();
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                } else {
+                    Toast.makeText(LoginActivity.this, "ERROR USER OR PASSWORD", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        /*auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
@@ -154,7 +198,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "ERROR USER OR PASSWORD", Toast.LENGTH_SHORT).show();
                 }
             }
-        });
+        });*/
 
     }
 
@@ -168,10 +212,33 @@ public class LoginActivity extends AppCompatActivity {
         } catch (Exception e) {
         }
 
-        if(inicio==null) {
+        if (inicio == null) {
             if (auth.getCurrentUser() != null) {
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                finish();
+                String id = auth.getCurrentUser().getUid();
+                mDataBase.child("usuario").child(id).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            String rol = snapshot.child("rol").getValue().toString();
+                            // Toast.makeText(AgregarTurnosActivity.this, us, Toast.LENGTH_SHORT).show();
+                            if (rol.equals("enfermero")) {
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                finish();
+                            }
+                            else{
+                                //startActivity(new Intent(LoginActivity.this, AdultoMayorActivity.class));
+                                //finish();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
             }
         }
 
