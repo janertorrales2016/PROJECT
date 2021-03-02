@@ -34,7 +34,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 
-public class LoginActivity extends AppCompatActivity  {
+public class LoginActivity extends AppCompatActivity {
     private EditText email;
     private EditText password;
     private Button login;
@@ -47,6 +47,7 @@ public class LoginActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         email = findViewById(R.id.inputEmail);
         password = findViewById(R.id.inputPassword);
         login = findViewById(R.id.btnLogin);
@@ -72,67 +73,74 @@ public class LoginActivity extends AppCompatActivity  {
         googleSignInClient = GoogleSignIn.getClient(LoginActivity.this,
                 googleSignInOptions);
         btSignIn.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view){
-               //inicializar inicio in intent
-               Intent intent = googleSignInClient.getSignInIntent();
-               //inicializar actividad de resultado
-               startActivityForResult(intent, 100);
-           }
+            @Override
+            public void onClick(View view) {
+                //inicializar inicio in intent
+                Intent intent = googleSignInClient.getSignInIntent();
+                //inicializar actividad de resultado
+                startActivityForResult(intent, 100);
+            }
         });
-        FirebaseUser  firebaseUser = auth.getCurrentUser();
+
+
+        /*FirebaseUser  firebaseUser = auth.getCurrentUser();
         if(firebaseUser != null){
             startActivity(new  Intent(LoginActivity.this,
                     MainActivity.class)
             .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-        }
+        }*/
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //comprobar condicion
-        if(requestCode == 100){
+        if (requestCode == 100) {
             Task<GoogleSignInAccount> signInAccountTask = GoogleSignIn
                     .getSignedInAccountFromIntent(data);
-            if(signInAccountTask.isSuccessful()){
+            if (signInAccountTask.isSuccessful()) {
                 String s = "Ingreso Google corecto";
                 displayToast(s);
                 try {
                     GoogleSignInAccount googleSignInAccount = signInAccountTask
                             .getResult(ApiException.class);
-                    if(googleSignInAccount != null){
+                    if (googleSignInAccount != null) {
                         AuthCredential authCredential = GoogleAuthProvider
                                 .getCredential(googleSignInAccount.getIdToken()
-                                , null);
+                                        , null);
                         //chekear credenciales
                         auth.signInWithCredential(authCredential)
                                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
-                                        if(task.isSuccessful()){
+                                        if (task.isSuccessful()) {
                                             startActivity(new Intent(LoginActivity.this,
                                                     MainActivity.class)
                                                     .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                                             displayToast("Ingreso exitoso firebase");
-                                        }else {
-                                            displayToast("Ingreso fallido: " +task.getException()
-                                            .getMessage());
+                                        } else {
+                                            displayToast("Ingreso fallido: " + task.getException()
+                                                    .getMessage());
                                         }
                                     }
                                 });
                     }
-                    }catch(ApiException e){
+                } catch (ApiException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
-    public void registro(View view){
-        startActivity(new Intent(LoginActivity.this,
+
+    public void registro(View view) {
+        /*startActivity(new Intent(LoginActivity.this,
                 RegisterActivity.class)
-                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));*/
+        startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+        finish();
     }
+
     private void loginUser(String email, String pass) {
 
         auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -151,7 +159,29 @@ public class LoginActivity extends AppCompatActivity  {
     }
 
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        String inicio = "";
+        try {
+            inicio = getIntent().getStringExtra("inicio");
+        } catch (Exception e) {
+        }
 
+        if(inicio==null) {
+            if (auth.getCurrentUser() != null) {
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                finish();
+            }
+        }
+
+
+       /* super.onStart();
+        if (auth.getCurrentUser()!=null){
+            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+            finish();
+        }*/
+    }
 
     public void loginFacebook(View view) {
 
@@ -168,7 +198,8 @@ public class LoginActivity extends AppCompatActivity  {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == event.KEYCODE_BACK) {
-            startActivity( new Intent(LoginActivity.this, StartActivity.class));
+            //startActivity( new Intent(LoginActivity.this, StartActivity.class));
+            finish();
         }
         return super.onKeyDown(keyCode, event);
     }

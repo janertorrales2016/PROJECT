@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,7 +29,7 @@ import uteq.student.project.Model.paciente;
 import uteq.student.project.R;
 
 public class AddUser extends AppCompatActivity {
-    private EditText usuario, contraseña, alias;
+    private EditText usuario, contraseña, nombre,apellido,telefono,cedula,direccion,nacimiento;
     private FirebaseAuth auth= FirebaseAuth.getInstance();
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private String IdOring = user.getUid();
@@ -59,35 +60,49 @@ public class AddUser extends AppCompatActivity {
     }
 
 
-    public void SaveUses(View view){
-        usuario=(EditText)findViewById(R.id.textusers);
-        contraseña=(EditText)findViewById(R.id.textpass);
-        alias =(EditText) findViewById(R.id.textalias);
+    public void SaveUses(View view) {
+        usuario = (EditText) findViewById(R.id.textusers);
+        contraseña = (EditText) findViewById(R.id.textpass);
+        // alias =(EditText) findViewById(R.id.textalias); nombre,apellido,telefono,cedula,direccion,nacimiento
+        nombre = (EditText) findViewById(R.id.txtNombreAM);
+        apellido = (EditText) findViewById(R.id.txtApellidoAM);
+        telefono = (EditText) findViewById(R.id.txtCelularAM);
+        cedula = (EditText) findViewById(R.id.txtCedulaAM);
+        direccion = (EditText) findViewById(R.id.txtDireccionAM);
+        nacimiento = (EditText) findViewById(R.id.txtNacimientoAM);
 
-        auth.createUserWithEmailAndPassword(usuario.getText().toString(), contraseña.getText().toString())
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            HashMap<String, Object> map= new HashMap<>();
-                            map.put("nombre", "" );
-                            map.put("apellido", "" );
-                            map.put("direccion", "");
-                            map.put("celular", "");
-                            map.put("fecha_nacimiento", "" );
-                            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-                            String currentDateandTime = sdf.format(new Date());
-                            map.put("fecha_create", currentDateandTime);
-                            map.put("fecha_update", currentDateandTime);
-                            map.put("rol", "AdultoMayor");
-                            FirebaseUser user2 = FirebaseAuth.getInstance().getCurrentUser();
-                            String uid = user2.getUid();
-                            FirebaseDatabase.getInstance().getReference().child("usuario").child(uid).setValue(map);
-                            FirebaseDatabase.getInstance().getReference().child("registro")
-                                    .child(IdOring).child(uid).child("nombre").setValue(alias.getText().toString());
+
+       // if (usuario.getText().toString().length() > 0 && contraseña.getText().toString().length() > 0 && nombre.getText().toString().length() > 0 && apellido.getText().toString().length() > 0) {
+            auth.createUserWithEmailAndPassword(usuario.getText().toString(), contraseña.getText().toString())
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                HashMap<String, Object> map = new HashMap<>();
+                                map.put("nombre", nombre.getText().toString());
+                                map.put("apellido", apellido.getText().toString());
+                                map.put("direccion", direccion.getText().toString());
+                                map.put("celular", telefono.getText().toString());
+                                map.put("fecha_nacimiento", nacimiento.getText().toString());
+                                SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+                                String currentDateandTime = sdf.format(new Date());
+                                map.put("fecha_create", currentDateandTime);
+                                map.put("fecha_update", currentDateandTime);
+                                map.put("rol", "AdultoMayor");
+                                FirebaseUser user2 = FirebaseAuth.getInstance().getCurrentUser();
+                                String uid = user2.getUid();
+                                FirebaseDatabase.getInstance().getReference().child("usuario").child(uid).setValue(map);
+                                FirebaseDatabase.getInstance().getReference().child("registro")
+                                        .child(IdOring).child(uid).child("nombre").setValue("valor");
+                                Toast toast = Toast.makeText(getApplicationContext(), "Add Succesfull", Toast.LENGTH_SHORT);
+                                toast.show();
+                            }
+                            else{
+                                Toast toast = Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT);
+                                toast.show();
+                            }
                         }
-                    }
-                });
-
+                    });
+        //}
     }
 }

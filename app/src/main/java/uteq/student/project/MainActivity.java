@@ -117,10 +117,11 @@ public class MainActivity extends AppCompatActivity {
                     .setPositiveButton("SI", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Intent intent= new Intent(Intent.ACTION_MAIN);
+                           /* Intent intent= new Intent(Intent.ACTION_MAIN);
                             intent.addCategory(Intent.CATEGORY_HOME);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(intent);
+                            startActivity(intent);*/
+                            finish();
                         }
                     })
                     .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -182,7 +183,8 @@ public class MainActivity extends AppCompatActivity {
 
             FirebaseAuth.getInstance().signOut();
             Toast.makeText(MainActivity.this,"Cerrar sesion", Toast.LENGTH_SHORT).show();
-            startActivity( new Intent(MainActivity.this, StartActivity.class));
+           // startActivity( new Intent(MainActivity.this, StartActivity.class));
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }
