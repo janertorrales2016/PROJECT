@@ -9,10 +9,7 @@
         android:id="@+id/opc_actualizar_Datos_Personales"
         android:title="Update personal data"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/opc_actualizar_Datos_Paciente"
-        android:title="Update patient data"
-        app:showAsAction="never" />
+
     <item
         android:id="@+id/opc_Reporte"
         android:title="Report"
@@ -24,7 +21,7 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/opc_ver_dispositivos"
-        android:title="Device"
+        android:title="Devices"
         app:showAsAction="never" />
 
     <item

@@ -105,6 +105,7 @@ public class AddUser extends AppCompatActivity {
                                                     if(task3.isSuccessful()) {
                                                         Toast toast = Toast.makeText(getApplicationContext(), "Add Succesfull", Toast.LENGTH_SHORT);
                                                         toast.show();
+                                                        //FirebaseAuth.getInstance().signOut();
                                                         finish();
                                                     }
                                                     else

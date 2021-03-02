@@ -154,10 +154,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        if(id == R.id.opc_actualizar_Datos_Paciente) {
-            //Intent intent = new Intent(this, activity_creditos.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            //startActivity(intent);
-        }
         if(id == R.id.opc_Reporte) {
             Intent intent = new Intent(this, Report.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
@@ -173,17 +169,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(id == R.id.opc_cerrar_sesion) {
-            /*Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            this.finish();*/
-
-            /*FirebaseAuth.getInstance().signOut();
-            Toast.makeText(MainActivity.this,"Cerrar sesion", Toast.LENGTH_SHORT).show();
-            startActivity( new Intent(MainActivity.this, LoginActivity.class));*/
-
             FirebaseAuth.getInstance().signOut();
             Toast.makeText(MainActivity.this,"Cerrar sesion", Toast.LENGTH_SHORT).show();
-           // startActivity( new Intent(MainActivity.this, StartActivity.class));
             finish();
         }
         return super.onOptionsItemSelected(item);

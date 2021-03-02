@@ -181,17 +181,36 @@ public class RecordatoriosActivity extends AppCompatActivity implements Calendar
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int id = item.getItemId();
+        //Toast.makeText(getApplicationContext(), Integer.toString(id), Toast.LENGTH_LONG).show();
+        if(id == R.id.opc_add_Paciente) {
+            Intent intent = new Intent(this, AddUser.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        }
+        if(id == R.id.opc_actualizar_Datos_Personales) {
+            Intent intent = new Intent(this, ConfigActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        }
 
+        if(id == R.id.opc_Reporte) {
+            Intent intent = new Intent(this, Report.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        }
 
+        if(id == R.id.opc_asignar_dispositivo) {
+            Intent intent = new Intent(this, AddDisp.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        }
+        if(id == R.id.opc_ver_dispositivos) {
+            //Intent intent = new Intent(this, activity_creditos.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            //startActivity(intent);
+        }
 
         if(id == R.id.opc_cerrar_sesion) {
-            /*Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            this.finish();*/
             FirebaseAuth.getInstance().signOut();
             Toast.makeText(RecordatoriosActivity.this,"Cerrar sesion", Toast.LENGTH_SHORT).show();
-            startActivity( new Intent(RecordatoriosActivity.this, StartActivity.class));
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

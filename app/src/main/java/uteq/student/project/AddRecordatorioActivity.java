@@ -543,24 +543,43 @@ public class AddRecordatorioActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        getMenuInflater().inflate(R.menu.menu_toolbar,menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int id = item.getItemId();
-
-
-
-        if (id == R.id.opc_cerrar_sesion) {
-            /*Intent intent = new Intent(this, MainActivity.class);
+        //Toast.makeText(getApplicationContext(), Integer.toString(id), Toast.LENGTH_LONG).show();
+        if(id == R.id.opc_add_Paciente) {
+            Intent intent = new Intent(this, AddUser.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
-            this.finish();*/
+        }
+        if(id == R.id.opc_actualizar_Datos_Personales) {
+            Intent intent = new Intent(this, ConfigActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        }
+
+        if(id == R.id.opc_Reporte) {
+            Intent intent = new Intent(this, Report.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        }
+
+        if(id == R.id.opc_asignar_dispositivo) {
+            Intent intent = new Intent(this, AddDisp.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        }
+        if(id == R.id.opc_ver_dispositivos) {
+            //Intent intent = new Intent(this, activity_creditos.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            //startActivity(intent);
+        }
+
+        if(id == R.id.opc_cerrar_sesion) {
             FirebaseAuth.getInstance().signOut();
-            Toast.makeText(AddRecordatorioActivity.this, "Cerrar sesion", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(AddRecordatorioActivity.this, StartActivity.class));
+            Toast.makeText(AddRecordatorioActivity.this,"Cerrar sesion", Toast.LENGTH_SHORT).show();
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
